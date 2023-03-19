@@ -1,0 +1,61 @@
+// . Define a class Student containing id, name as instance members and two
+// methods named getStudent() and displayStudent() as instance
+// methods. Now create a class named Exam which is inherited from Student. The
+// derived class contains the mark secured in three subjects’ sub1, sub2, sub3.
+// The derived class also contains getMark() and showMark() as instance
+// members. Now create an array of objects of the Exam class and input the data
+// and display the Mark Sheet of the all the Students. 
+import java.util.Scanner;
+class Student{
+    public int id;
+    public String name;
+    
+    public void getStudent(){
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Id and Name :");
+        id = sc.nextInt();
+        name = sc.next();
+    }
+    public void displayStudent(){
+        System.out.println("ID      : " + id );
+        System.out.println("Name    : " + name);
+    }
+}
+class Exam extends Student{
+    public int sub1;
+    public int sub2;
+    public int sub3;
+    
+    public void getMarks(){
+        Scanner sub = new Scanner(System.in);
+        System.out.print("Enter sub1, sub2, and sub3 : ");
+        sub1 = sub.nextInt();
+        sub2 = sub.nextInt();
+        sub3 = sub.nextInt();
+    }
+    
+    public void showMarks(){
+        System.out.println("Sub1    : " + sub1);
+        System.out.println("Sub2    : " + sub2);
+        System.out.println("Sub3    : " + sub3);
+        System.out.println();
+    }
+    
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter the Data of students needed? ");
+        int entries = input.nextInt();
+        Exam [] ex = new Exam [entries];
+
+        for(int i = 0; i < ex.length; i++){
+            ex[i] = new Exam();
+            ex[i].getStudent();
+            ex[i].getMarks();
+        }
+        for(int i = 0; i < ex.length; i++){
+            // ex[i] = new Exam();
+            ex[i].displayStudent();
+            ex[i].showMarks();
+        }
+    }
+}

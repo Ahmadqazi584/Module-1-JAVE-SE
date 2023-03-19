@@ -1,0 +1,80 @@
+// 4. Define a class Employee input the id, name and basic of 5 employees and
+// display their salary slip based on the following condition. Use the proper
+// constructor and methods. 
+
+import java.util.Scanner;
+class Employee{
+    public int id;
+    public String name;
+    public int basic;
+    public float DA = 0;
+    public float HRA = 0;
+    public float PF = 0;
+    
+    public Employee(int basic){
+        this.basic = basic;
+        if(this.basic < 10000 && this.basic >= 5000){
+            DA = (this.basic * 0.4f);
+            HRA = (this.basic * 0.2f);
+            PF = (this.basic * 0.1f);
+        }
+        if(this.basic < 5000 && this.basic >= 3000){
+            DA = (this.basic * 0.3f);
+            HRA = (this.basic * 0.2f);
+            PF = (this.basic * 0.1f);
+        }
+        if(this.basic < 3000){
+            DA = (this.basic * 0.2f);
+            HRA = (this.basic * 0.1f);
+            PF = (this.basic * 0.1f);
+        }
+        if(this.basic > 10000){
+            DA = (this.basic * 0.5f);
+            HRA = (this.basic * 0.3f);
+            PF = (this.basic * 0.1f);
+        }
+    }
+    public void showDetails(){
+        System.out.println("           ++++++++++++++++++++++++++++         ");
+        System.out.println("           SALARY STATEMENT OF THE EMPLOYEES");
+        System.out.println("           ++++++++++++++++++++++++++++         ");
+        System.out.println("              AAAAAAA Pvt. Ltd.              ");
+        System.out.println("================================================================");
+        System.out.println("ID         :  " + id );
+        
+        System.out.println("Name         :  " + name );
+        
+        System.out.println("Basic         :  " + basic);
+        
+        System.out.println("DA(+)         :  " + DA);
+        
+        System.out.println("HRA(+)         :  " + HRA );
+        
+        System.out.println("PF(-)         :  " + PF );
+        System.out.println("================================================================");
+    }
+    public static void main(String[] args) {
+        Employee e;
+        System.out.println("Enter the Number of Entries");
+        Scanner input = new Scanner(System.in);
+        int entries = input.nextInt();
+        int arr_id [] = new int [entries];
+        String arr_name [] = new String [entries];
+        int arr_basic [] = new int [entries];
+        
+        for(int i = 0; i < entries; i++){
+            System.out.println("Enter " + (i+1) + " Entry details");
+            System.out.println("Enter ID, Name and Basic : ");
+            arr_id[i] = input.nextInt();
+            arr_name[i] = input.next();
+            arr_basic[i] = input.nextInt();
+            
+            e = new Employee(arr_basic[i]);
+        }
+        
+        for(int i = 0; i < entries; i++){
+             e = new Employee(arr_basic[i]);
+             e.showDetails();
+        }
+    }
+}

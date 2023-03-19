@@ -1,0 +1,120 @@
+// Abstraction Real Life Example of living bodies
+// Living body have no any specific function but its all parts have different functions
+
+abstract class body{
+    public abstract void mainfunction();
+}
+
+class heart extends body{
+    public void mainfunction(){
+        System.out.println("Pumps blood across whole body parts");
+    }
+}
+class brain extends body{
+    
+    public void mainfunction(){
+        System.out.println("Manages the working of all parts");
+    }
+}
+class liver extends body{
+    public void mainfunction(){
+        System.out.println("Filters the Blood & Produces Biles Enzyme");
+    }
+}
+class HelloWorld {
+    public static void main(String[] args) {
+        heart h = new heart();
+        h.mainfunction();
+        
+        brain b = new brain();
+        b.mainfunction();
+        
+        liver l = new liver();
+        l.mainfunction();
+    }
+}
+
+
+
+
+
+
+
+// Software Development is General Term so it have Various functions possible no any Specific that's why it's best example for Abstraction
+
+abstract class SoftwareDeveloper{
+    public abstract void work();
+}
+
+class WebDeveloper extends SoftwareDeveloper{
+    public void work(){
+        System.out.println("A Software Developer who develops Websites.");
+    }
+}
+class AppDeveloper extends SoftwareDeveloper{
+    public void work(){
+        System.out.println("A Software Developer who Build Professional Applications for Andriod & iOS.");
+    }
+}
+class DesktopDeveloper extends SoftwareDeveloper{
+    public void work(){
+        System.out.println("A Software Developer who Divides Almost all sort of Desktop Applications.");
+    }
+}
+class HelloWorld {
+    public static void main(String[] args) {
+       WebDeveloper web = new WebDeveloper();
+       web.work();
+       
+       AppDeveloper app = new AppDeveloper();
+       app.work();
+       
+       DesktopDeveloper desktop = new DesktopDeveloper();
+       desktop.work();
+    }
+}
+
+
+
+
+
+
+
+
+// We know better Taxation on Tollplaza depends on Vechicle, Without Vechicle we can't estimate the Taxation. This is Best Example for Understand Abstraction with Real Life Example
+
+abstract class Taxation{
+    public abstract void Fees(int fees);
+}
+
+class CarTaxation extends Taxation{
+    public void Fees(int fees){
+        System.out.println("Tax for Car on Tollplaza : " + fees);
+    }
+}
+
+class BusTaxation extends Taxation{
+    public void Fees(int fees){
+        System.out.println("Tax for Bus on Tollplaza : " + fees);
+    }
+}
+
+class TruckTaxation extends Taxation{
+    public void Fees(int fees){
+        System.out.println("Tax for Truck on Tollplaza : " + fees);
+
+    }
+}
+
+class HelloWorld {
+    public static void main(String[] args) {
+       CarTaxation car = new CarTaxation();
+       car.Fees(40);
+      
+       BusTaxation bus = new BusTaxation();
+       bus.Fees(100);
+       
+       TruckTaxation truck = new TruckTaxation();
+       truck.Fees(150);
+    }
+}

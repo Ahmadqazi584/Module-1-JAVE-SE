@@ -1,0 +1,35 @@
+ Define an abstract method simpleInterest(double p, double t) to
+ calculate the simple interest of 2 different bank. Here the r will be declared in
+ site the method.
+import java.util.Scanner;
+abstract class Interest{
+    public double r;
+    public abstract double simpleInterest(double p, double t);
+}
+class Bank extends Interest{
+    public double simpleInterest(double p, double t){
+        Scanner sc = new Scanner(System.in);
+        System.out.println();
+        System.out.print(Enter Interest rate of your Bank );
+        r = sc.nextDouble();
+        return (rpt);
+    }
+    public static void main(String[] args) {
+        double p;
+        double t;
+        
+        Scanner input = new Scanner(System.in);
+        System.out.print(Enter the Principal amount   );
+        p = input.nextDouble();
+        System.out.print(Enter Number of time periods  );
+        t = input.nextDouble();
+        
+        Bank spain = new Bank();
+         Bank of Spain
+        System.out.print(Your bank interest =  + spain.simpleInterest(p,t));
+        
+        Bank usa = new Bank();
+         Bank of USA
+        System.out.print(Your bank interest =  + usa.simpleInterest(p,t));
+    }
+}

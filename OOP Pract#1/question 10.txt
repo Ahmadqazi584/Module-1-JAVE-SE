@@ -1,0 +1,64 @@
+// Create a package that contains a class Employee with id and name as
+// instance member. It contains input() and show() methods to input and
+// display the data respectively.
+// Now create two different class named PGteacher and UGteacher that are
+// inherited from Employee class where course is the data member and input and
+// output methods of their own in both of them. Create the objects of these two
+// class to store and display the data of all the data members. 
+
+class Employee{
+    private int id;
+    private String name;
+    
+    public void input(int id, String name){
+        this.id = id;
+        this.name = name;
+    }
+    public void show(){
+        System.out.println("ID      : " + id);
+        System.out.println("Name   : " + name);
+    }
+}
+
+class PGteacher extends Employee{
+    private String course;
+    
+    public String courseInput(String course){
+        this.course = course;
+        return this.course;
+    }
+    public void courseShow(){
+        System.out.println("Course of PGteacher is : " + course);
+        System.out.println();
+    }
+}
+class UGteacher extends Employee{
+    private String course;
+    
+    public String courseInput(String course){
+        this.course = course;
+        return this.course;
+    }
+    public void courseShow(){
+        System.out.println("Course of UGteacher is : " + course);
+        System.out.println();
+    }
+}
+class HelloWorld{
+    
+    public static void main(String[] args) {
+        PGteacher pg = new PGteacher();
+        pg.input(107533, "Ahmed Qazi");
+        pg.courseInput("WMA-Batch3");
+        
+        pg.show();
+        pg.courseShow();
+        
+        UGteacher ug = new UGteacher();
+        ug.input(718200, "Tushar Lakhani");
+        ug.courseInput("CCO-Batch5");
+        
+        ug.show();
+        ug.courseShow();
+    }
+}

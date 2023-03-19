@@ -1,0 +1,127 @@
+ class StringWorld {
+    private String name;
+    private String sumstr;
+    private String origstr;
+    private int count = 0;
+
+//    1- Reverse a string
+    public void reverseString(String name){
+        this.name = name;
+        char ch [] = this.name.toCharArray();
+        for(int i = ch.length-1; i >= 0; i--){
+            System.out.print(ch[i]);
+        }
+    }
+//    2- Check Palidrom
+    public void palindromString(String name){
+        this.name = name;
+        char ch [] = this.name.toCharArray();
+        char newch [] = new char[ch.length];
+//        sumstr = String.valueOf(ch);
+//        sumstr = new String(ch);
+        int count = 0;
+        for(int i = ch.length-1; i >= 0; i--){
+                newch[count] = ch[i];
+                count++;
+        }
+        sumstr = new String(newch);
+
+        if (this.name.equals(sumstr)){
+            System.out.println(this.name + " is Palindrome");
+        }else {
+            System.out.println(this.name + " is not palindrome");
+        }
+    }
+//    3- Check Anagram
+    public void anagramString(String name){
+        this.name = name;
+        origstr = "act";
+//        int origstr_length = origstr.length();
+//        int inputstr_length = this.name.length();
+        if (origstr.length() == this.name.length()){
+            char [] orig_arr = origstr.toCharArray();
+            char ch_arr [] = this.name.toCharArray();
+            for (int i = 0; i < ch_arr.length; i++) {
+                for (int j = 0; j < ch_arr.length; j++) {
+                    if (ch_arr[i] == orig_arr[j]){
+                        count++;
+                    }
+                }
+            }
+            if (count == orig_arr.length){
+                System.out.println("The String is Anagram");
+            }else {
+                System.out.println("Sorry String is not Anagram");
+            }
+        }else{
+            System.out.println("Input String length must be equal to Orignal String");
+        }
+    }
+
+//    4- Diagnoss String
+    public void diagonseString(String name){
+        this.name = name.toLowerCase();
+        System.out.println("Size : " + this.name.length());
+        char vowel_arr [] = {'a','e','i','o','u'};
+        char conso_arr [] = {'b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','w','x','y','z'};
+        char input_arr [] = this.name.toCharArray();
+        int vowel_count = 0;
+        int cons_count = 0;
+        int space_count = 0;
+
+        for (int i = 0; i < vowel_arr.length; i++) {
+            for (int j = 0; j < input_arr.length; j++) {
+                if (input_arr[j] == vowel_arr[i] ){
+                    vowel_count++;
+                    break;
+                }
+            }
+        }
+        for (int i = 0; i < conso_arr.length; i++) {
+            for (int j = 0; j < input_arr.length; j++) {
+                if (input_arr[j] == conso_arr[i] ){
+                    cons_count++;
+                    break;
+                }
+            }
+        }
+        for (int i = 0; i < input_arr.length; i++) {
+            if (input_arr[i] == ' '){
+                space_count++;
+            }
+        }
+
+        System.out.println("Total Vowel : " + vowel_count);
+        System.out.println("Total Consonants : " + cons_count);
+        System.out.println("Total Spaces : " + space_count);
+    }
+//    5- Check frequency of letters:
+    public void frequencyString(String name){
+        this.name = name.toLowerCase();
+        char alpha_arr [] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+        char input_arr [] = this.name.toCharArray();
+        int alpha_count;
+        for (int i = 0; i < alpha_arr.length; i++) {
+            alpha_count = 0;
+            for (int j = 0; j < input_arr.length; j++) {
+                if (alpha_arr[i] == input_arr[j]){
+                    alpha_count++;
+                }
+            }
+            if (alpha_count != 0){
+                System.out.println(alpha_arr[i] + " is : " + alpha_count);
+            }
+        }
+    }
+
+
+    public static void main(String[] args) {
+        StringWorld str = new StringWorld();
+        str.reverseString("ali");
+        str.palindromString("cbc");
+        str.anagramString("cat");
+        str.diagonseString("Hello world");
+        str.frequencyString( "Ahmed Qazi");
+        
+    }
+}

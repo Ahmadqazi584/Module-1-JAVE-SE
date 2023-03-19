@@ -1,0 +1,22 @@
+// 9. Define an interface Shape and print a line with a specific character below a text.
+// Here void printLine(String s)is to declared in Shape and to be
+// implemented by different class. 
+
+interface Shape{
+    public void printLine(String s);
+}
+
+class HelloWorld implements Shape{
+    public void printLine(String s){
+        int getstr = s.length();
+        System.out.println(s);
+        System.out.println();
+        for(int i = 0; i<getstr; i++){
+            System.out.print("*");
+        }
+    }
+    public static void main(String[] args) {
+        HelloWorld h = new HelloWorld();
+        h.printLine("Ahmed Qazi");
+    }
+}

@@ -1,0 +1,44 @@
+// 5. Define a class Student and create instance members as id, name and age.
+// Define id as static where the id will start with 1001 and the next id will be
+// updated as 1002 and so on. Create five objects of students and display them. 
+
+import java.util.Scanner;
+class Student{
+    public static int id;
+    public String name;
+    public int age;
+    
+    public Student(int id, String name, int age){
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
+    public void showDetails(){
+        System.out.println("ID    : " + this.id);
+        System.out.println("Name  : " + this.name);
+        System.out.println("Age   : " + this.age);
+    }
+    
+    public static void main(String[] args) {
+        Student s;
+        id = 1001;
+        Scanner sc = new Scanner(System.in);
+        int arr_id [] = new int [2];
+        String arr_name [] = new String [2];
+        int arr_age [] = new int [2];
+        
+        for(int i = 0; i < arr_id.length; i++){
+            System.out.print("Enter Name and Age : ");
+            // arr_id[i] = sc.nextInt();
+            arr_name[i] = sc.next();
+            arr_age[i] = sc.nextInt();
+            s = new Student(id, arr_name[i], arr_age[i]);
+            id = id + i;
+        }
+        
+        for(int i = 0; i < arr_id.length; i++){
+            s = new Student(id, arr_name[i], arr_age[i]);
+            s.showDetails();
+        }
+    }
+}

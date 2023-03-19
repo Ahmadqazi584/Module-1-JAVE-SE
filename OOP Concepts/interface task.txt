@@ -1,0 +1,89 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+interface Animal{
+    public void animalSound();
+}
+class Dog implements Animal{
+    public void animalSound(){
+        System.out.println("Wow Wow!");
+    }
+}
+class Sheep implements Animal{
+    public void animalSound(){
+        System.out.println("Mee Mee!");
+    }
+}
+class HelloWorld {
+    public static void main(String[] args) {
+        Dog d = new Dog();
+        d.animalSound();
+        
+        Sheep s = new Sheep();
+        s.animalSound();
+    }
+}
+
+
+
+
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+interface Language{
+    public void inCountry();
+}
+class English implements Language{
+    public void inCountry(){
+        System.out.println("USA, Uk, and Canada");
+    }
+}
+class Urdu implements Language{
+    public void inCountry(){
+        System.out.println("Pakistan, India , and Srilanka");
+    }
+}
+class HelloWorld {
+    public static void main(String[] args) {
+        English e = new English();
+        e.inCountry();
+        
+        Urdu u = new Urdu();
+        u.inCountry();
+    }
+}
+
+
+
+
+
+
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+// dark, middle, and modern ages
+interface OperatingSystem{
+    public void features(String age);
+}
+class DOS implements OperatingSystem{
+    public void features(String age){
+        System.out.println("Age of DOS is: " + age);
+        System.out.println("Its Command Line Interface having Black cmd Screen where process executed by Intructions writing");
+    }
+}
+class Windows implements OperatingSystem{
+    public void features(String age){
+        System.out.println("Age of Windows is: " + age);
+        System.out.println("Its Graphical User Interface with Icons, Menu, Images, and Visual Content User Friendly available in Colorful display");
+    }
+}
+class HelloWorld {
+    public static void main(String[] args) {
+        DOS d = new DOS();
+        d.features("dark");
+        
+        Windows w = new Windows();
+        w.features("modern");
+    }
+}

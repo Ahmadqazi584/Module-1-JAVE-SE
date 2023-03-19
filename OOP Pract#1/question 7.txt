@@ -1,0 +1,30 @@
+// Define a method area() and use the method overloading concept to calculate
+// the area of square, rectangle and circle
+
+class HelloWorld {
+    private float width;
+    private float length;
+    private float areas;
+    
+    // area formula for circle
+    public double area(int radius){
+        areas = 2 * 3.14f * (radius*radius);
+        return areas;
+    }
+    // area of square
+    public double area(float side){
+        areas = side*side;
+        return areas;
+    }
+    
+    // area of rectangle
+    public double area(float width, float length){
+        areas = width*length;
+        return areas;
+    }
+    
+    public static void main(String[] args) {
+        HelloWorld h = new HelloWorld();
+        System.out.println(h.area(3.22f));
+    }
+}

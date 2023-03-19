@@ -1,0 +1,29 @@
+// 1. Define a class named Customer with instance members as id and name and
+// input the data using getDetails() and display them using showDetails().
+
+class Customer{
+    public int id;
+    public String name;
+    
+    public void getDetails(int id, String name){
+        this.id = id;
+        this.name = name;
+    }
+    public void showDetails(){
+        System.out.println("Id : " + id);
+        System.out.println("Name : " + name);
+    }
+    public static void main(String[] args) {
+        Customer c = new Customer();
+        Scanner input = new Scanner(System.in);
+        
+        System.out.print("Enter the id : " );
+        int ids = input.nextInt();
+        System.out.println();
+        System.out.print("Enter the name : " );
+        String names = input.next();
+        
+        c.getDetails(ids, names);
+        c.showDetails();
+    }
+}
