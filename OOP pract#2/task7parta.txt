@@ -1,0 +1,65 @@
+
+import java.net.Socket;
+import java.util.Scanner;
+
+class tollbooth {
+    public int total_cars;
+    public double total_amount;
+    public int total_paying_cars;
+    public double total_amount_paying_car;
+    public int total_nopaying_cars;
+    public double total_amount_nopaying_car;
+    public double final_amount;
+    // method for value initialization
+    public tollbooth(){
+        final_amount = 0;
+        total_amount_paying_car = 0;
+        total_amount_nopaying_car = 0;
+    }
+    // method of paying car and their calculation
+    public double payingCar(){
+        Scanner input1 = new Scanner(System.in);
+        System.out.print("Enter total paying car: ");
+        total_paying_cars = input1.nextInt();
+        for (int i = 0; i < total_paying_cars; i++) {
+            System.out.print("enter the amount of car " + (i+1) + ": ");
+            final_amount = final_amount + input1.nextInt();
+        }
+        total_amount_paying_car = final_amount + 0.5;
+        return total_amount_paying_car;
+    }
+    // method of non-paying car and their calculation
+    public double nopayingCar() {
+        Scanner input2 = new Scanner(System.in);
+        System.out.print("Enter total no paying car: ");
+        total_nopaying_cars = input2.nextInt();
+        for (int i = 0; i < total_nopaying_cars; i++) {
+            System.out.print("enter the amount of car " + (i+1) + ": ");
+            total_amount_nopaying_car = total_amount_nopaying_car + input2.nextInt();
+        }
+        return total_amount_nopaying_car;
+    }
+    public void display(){
+        System.out.println("The total amount of cars: " + (total_amount_paying_car + total_amount_nopaying_car));
+        System.out.println("The total number of cars: " + (total_nopaying_cars + total_paying_cars));
+    }
+    public static void main(String [] args){
+        tollbooth t = new tollbooth();
+        Scanner input = new Scanner(System.in);
+        for (int i = 0; i < 3; i++) {
+            System.out.print("enter any character 1: ");
+            if (input.next().charAt(0) != 'e'){
+                t.payingCar();
+            }
+            System.out.print("enter any character 2: ");
+            if (input.next().charAt(0) != 'e'){
+                t.nopayingCar();
+            }
+            System.out.println("enter esc by e to display resuts: ");
+            if(input.next().charAt(0) == 'e'){
+                t.display();
+            }
+        }
+
+    }
+}

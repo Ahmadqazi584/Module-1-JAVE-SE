@@ -1,0 +1,29 @@
+// Task #2
+import java.util.Scanner;
+class Temp {
+    public double temperature;
+    
+    public void tempConversion(double temp, int n){
+        if(n == 1){
+            temperature = (temp - 32) * 5/9;
+            System.out.print(temperature);
+        }
+        else if(n == 2){
+            temperature = ((9*temp)/5) + 32;
+            System.out.print(temperature);
+        }
+        else{
+            System.out.print("Please Enter 1 or 2 for choice");
+        }
+    }
+    
+    public static void main(String[] args) {
+        Temp t = new Temp();
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Type 1 to convert Fahrenhiet to Celsius, \n 2 to convert Cedlsius to Fahrenheit: ");
+        int choice = sc.nextByte();
+        System.out.print("Enter the Temperature : ");
+        double tem = sc.nextInt();
+        t.tempConversion(tem, choice);
+    }
+}

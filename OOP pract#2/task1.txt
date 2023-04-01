@@ -1,0 +1,19 @@
+// Task #1
+class Multiples {
+    public int number;
+    
+    public void Table(int n){
+        number = n;
+        for(int i = 1; i <= 200; i++){
+            System.out.print(i*number + " ");
+            if(i%10 == 0){
+                System.out.println();
+            }
+        }
+    }
+    
+    public static void main(String[] args) {
+        Multiples m = new Multiples();
+        m.Table(7);
+    }
+}

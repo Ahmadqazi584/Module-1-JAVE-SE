@@ -1,0 +1,32 @@
+
+import java.util.Scanner;
+
+class employee {
+    public int emp_id;
+    public float emp_salary;
+    int arr_id [] = new int[3];
+    float arr_salary [] = new float[3];
+
+    public void main(){
+        Scanner sc = new Scanner(System.in);
+
+        for (int i = 0; i < arr_id.length; i++) {
+            System.out.print("Enter the id of employee " + (i+1) + " : ");
+            arr_id[i] = sc.nextInt();
+            System.out.print("Enter the salary of employee " + (i+1) + " : ");
+            arr_salary[i] = sc.nextFloat();
+        }
+    }
+    public void display(){
+        for (int i = 0; i < arr_id.length; i++) {
+            System.out.println((i+1) + " employee id : " + arr_id[i]);
+            System.out.println((i+1) + " employee salary : " + arr_salary[i]);
+        }
+    }
+
+    public static void main(String[] args) {
+        employee em = new employee();
+        em.main();
+        em.display();
+    }
+}

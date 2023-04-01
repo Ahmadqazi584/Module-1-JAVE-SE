@@ -1,0 +1,52 @@
+// task #3
+import java.util.Scanner;
+class Calculator {
+    public void numberCalculate(int num1, int num2, char op){
+        switch(op){
+            case '/':
+                System.out.println("Division of two numbers : " + (num1/num2) );
+                break;
+            case '*':
+                System.out.println("Multiplication of two numbers : " + (num1*num2));
+                break;
+            case '+':
+                System.out.println("Addition of two numbers : " + (num1+num2));
+                break;
+            case '-':
+                System.out.println("Substraction of two numbers : " + (num1-num2) );
+                break;
+            default :
+                System.out.println("Please use operator among four /, *, +, and - ");
+        }
+    }
+    public static void main(String[] args) {
+        Calculator c = new Calculator();
+        Scanner sc = new Scanner(System.in);
+        int firstnum;
+        int secondnum;
+        char op;
+        boolean flag = true;
+        char cont;
+        while(flag){
+            System.out.print("Enter First Number : " );
+            firstnum = sc.nextInt();
+            System.out.print("Enter Second Number : " );
+            secondnum = sc.nextInt();
+        
+            System.out.print("Enter the operator : ");
+            op = sc.next().charAt(0);
+        
+            c.numberCalculate(firstnum, secondnum, op);
+            System.out.println();
+            System.out.print("Do another (y/n) ? ");
+            cont = sc.next().charAt(0);;
+            if(cont == 'y'){
+                continue;
+            }else if(cont == 'n'){
+                break;
+            }else{
+                System.out.print("Please Choose (y/n) ?");
+            }
+        }
+    }
+}

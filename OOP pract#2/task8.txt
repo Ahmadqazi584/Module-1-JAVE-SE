@@ -1,0 +1,30 @@
+
+import java.util.Scanner;
+
+public class timeConversion {
+    public int sec;
+    public int HH, MM, SS;
+    public int hours, mintues, seconds;
+
+    public void timeConversion(int sec){
+        this.sec = sec;
+        HH = (this.sec/3600);
+        hours = (this.sec%3600);
+        MM = (hours/60);
+        mintues = (hours%60);
+        SS = mintues;
+
+         if (HH < 24 && MM < 60 && SS < 60){
+             System.out.println(HH + " : " + MM + " : " + SS);
+         }else if (HH == 24 && MM == 0 && SS ==0){
+             System.out.println(HH + " : " + MM + " : " + SS);
+         }else{
+             System.out.println("One Day Past");
+         }
+    }
+
+    public static void main(String[] args) {
+        timeConversion tc = new timeConversion();
+        tc.timeConversion(86420);
+    }
+}

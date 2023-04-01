@@ -1,0 +1,68 @@
+import java.util.Scanner;
+
+class Fractions {
+    int a, b, c, d;
+    double ans;
+    public Fractions(){
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter value of a : ");
+        a = sc.nextInt();
+        System.out.print("Enter the value of b : " );
+        b = sc.nextInt();
+        System.out.print("Enter the value of c : ");
+        c = sc.nextInt();
+        System.out.print("Enter the value of d : ");
+        d = sc.nextInt();
+    }
+    public void addFractions(){
+        ans = (double) (a*d + b*c) / (d*b);
+        System.out.println("The Addition : " + ans);
+    }
+    public void subFractions(){
+        ans = (double) (a*d - b*c) / (d*b);
+        System.out.println("The Substraction : " + ans);
+    }
+    public void mulFractions(){
+        ans = (double) (a*c) / (d*b);
+        System.out.println("The Multiplication : " + ans);
+    }
+    public void divFractions(){
+        ans = (double) (a*d) / (b*c);
+        System.out.println("The Division : " + ans);
+    }
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        Fractions f;
+        boolean flag = true;
+        char ch, cont;
+        while (flag){
+            f = new Fractions();
+            System.out.print("Enter sign of operation : ");
+            ch = input.next().charAt(0);
+            switch (ch){
+                case '+':
+                    f.addFractions();
+                    break;
+                case '-':
+                    f.subFractions();
+                    break;
+                case '*':
+                    f.mulFractions();
+                    break;
+                case '/':
+                    f.divFractions();
+                    break;
+                default:
+                    System.out.print("Please Select from +, -, *, and / ");
+            }
+            System.out.print("Do another (y/n) ? ");
+            cont = input.next().charAt(0);
+            if(cont == 'y'){
+                continue;
+            }else {
+                break;
+            }
+        }
+    }
+}
