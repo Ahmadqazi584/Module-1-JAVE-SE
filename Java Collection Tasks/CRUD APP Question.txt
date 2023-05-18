@@ -1,0 +1,78 @@
+CRUD application
+
+Welcome to Students Data
+
+1- Add Student
+2- Update Student
+3- Delete Student
+4- Get Student
+5- Get All Students
+
+
+Select any choice : 1
+
+Enter student id : 22
+Enter student name : Ali
+enter student roll : 20CS56
+Enter student age : 20
+enter student email : abc@gmail.com
+
+Student Added successfully
+
+1- Add Student
+2- Update Student
+3- Delete Student
+4- Get Student
+5- Get All Students
+
+Select any choice : 2 
+enter student ID to update the record : 67
+
+student does not exists 
+
+
+1- Add Student
+2- Update Student
+3- Delete Student
+4- Get Student
+5- Get All Students
+
+Select any choice : 2 
+
+enter student id : 22
+
+Enter student name : Ali updated
+enter student roll : 20CS57
+Enter student age : 20
+enter student email : abc@gmail.com
+
+Student successfuly updated.
+
+1- Add Student
+2- Update Student
+3- Delete Student
+4- Get Student
+5- Get All Students
+
+Select any choice : 3 
+
+enter student id : 22
+
+student deleetd 
+
+
+1- Add Student
+2- Update Student
+3- Delete Student
+4- Get Student
+5- Get All Students
+
+Select any choice : 4
+
+enter student id : 22
+
+get all students
+
+
+ID    Name      Email 	Roll	
+22    Yasir	abc     23Cs34
