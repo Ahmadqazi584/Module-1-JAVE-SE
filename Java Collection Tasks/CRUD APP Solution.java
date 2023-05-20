@@ -1,22 +1,64 @@
 package com.company;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class CrudApp {
-    Scanner sc = new Scanner(System.in);
-    // for crudOptions();
-    public byte crudoption;
-    // for addStudent();
-    ArrayList<Integer> idlist = new ArrayList<>();
-    ArrayList<String> namelist = new ArrayList<>();
-    ArrayList<String> rolllist = new ArrayList<>();
-    ArrayList<Integer> agelist = new ArrayList<>();
-    ArrayList<String> emaillist = new ArrayList<>();
-    // for updateStudent();
+public class CrudApplication {
+    public int id;
+    public String name;
+    public String roll;
+    public byte age;
+    public String email;
+    public int crudoption;
     public int recordID;
     public boolean recordflag = false;
+    ArrayList<CrudApplication> student = new ArrayList<>();
+    Scanner sc = new Scanner(System.in);
+    
+    CrudApplication capp;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getRoll() {
+        return roll;
+    }
+
+    public void setRoll(String roll) {
+        this.roll = roll;
+    }
+
+    public byte getAge() {
+        return age;
+    }
+
+    public void setAge(byte age) {
+        this.age = age;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public void crudOptions(){
+        System.out.println();
         System.out.println("1- Add Student");
         System.out.println("2- Update Student");
         System.out.println("3- Delete Student");
@@ -39,79 +81,75 @@ public class CrudApp {
             System.out.println("Select 1, 2, 3, 4, and 5 options for Results");
         }
     }
+
     public void addStudent(){
+        capp = new CrudApplication();
+
         System.out.print("Enter the id : ");
-        idlist.add(sc.nextInt());
+        capp.setId(sc.nextInt());
         System.out.print("Enter the Name : ");
-        namelist.add(sc.next());
+        capp.setName(sc.next());
         System.out.print("Enter the roll : ");
-        rolllist.add(sc.next());
+        capp.setRoll(sc.next());
         System.out.print("Enter the Age : ");
-        agelist.add(sc.nextInt());
+        capp.setAge(sc.nextByte());
         System.out.print("Enter the Email : ");
-        emaillist.add(sc.next());
+        capp.setEmail(sc.next());
+        student.add(capp);
         System.out.println();
         System.out.print("Student Added Successfully");
-        CrudApp crud = new CrudApp();
         crudOptions();
     }
     public void updateStudent(){
         System.out.print("enter student ID to update the record : ");
         recordID = sc.nextInt();
-        for(int id : idlist){
-            if (recordID != id){
+        for (CrudApplication app : student){
+            if (recordID != app.getId()){
                 System.out.println("student does not exists \n");
                 System.out.println();
                 crudOptions();
             }else {
+                System.out.print("Enter the id : ");
+                capp.setId(sc.nextInt());
                 System.out.print("Enter the Name : ");
-                namelist.add(idlist.indexOf(id), sc.next());
-                System.out.print("Enter the Roll : ");
-                rolllist.add(idlist.indexOf(id), sc.next());
+                capp.setName(sc.next());
+                System.out.print("Enter the roll : ");
+                capp.setRoll(sc.next());
                 System.out.print("Enter the Age : ");
-                agelist.add(idlist.indexOf(id), sc.nextInt());
+                capp.setAge(sc.nextByte());
                 System.out.print("Enter the Email : ");
-                emaillist.add(idlist.indexOf(id), sc.next());
+                capp.setEmail(sc.next());
+                student.add(student.indexOf(app),capp);
                 System.out.println();
-                System.out.println("Records Updated Successfully!");
-                System.out.println();
+                System.out.print("Student updated Successfully");
                 crudOptions();
             }
         }
     }
-    public void deleteStudent(){
+    public void deleteStudent() {
         System.out.print("enter student ID to delete the record : ");
         recordID = sc.nextInt();
-        for(int id : idlist){
-            if (id != recordID){
+        for (CrudApplication app : student){
+            if (recordID != app.getId()){
                 System.out.println("student does not exists \n");
                 System.out.println();
                 crudOptions();
             }else {
-                namelist.remove(idlist.indexOf(id));
-                rolllist.remove(idlist.indexOf(id));
-                agelist.remove(idlist.indexOf(id));
-                emaillist.remove(idlist.indexOf(id));
-                idlist.remove(idlist.indexOf(id));
-                System.out.println();
-                System.out.println("Record Deleted Successfully!");
-                System.out.println();
-                crudOptions();
+                student.remove(student.indexOf(app));
             }
         }
     }
-    public void getStudent(){
+    public void getStudent() {
         System.out.print("enter student ID to show the record : ");
         recordID = sc.nextInt();
-
-        for (int i = 0; i < idlist.size(); i++) {
-            if (recordID == idlist.get(i)){
+        for (CrudApplication app : student){
+            if (recordID == app.getId()){
                 recordflag = false;
                 System.out.println("ID \t\t\t Name \t\t Roll \t\t Age \t\t Email");
-                System.out.println(idlist.get(i) + "\t\t" + namelist.get(i) + "\t\t" + rolllist.get(i) + "\t\t" + agelist.get(i) + "\t\t" + emaillist.get(i));
+                System.out.println(app.getId() + "\t\t" + app.getName() + "\t\t" + app.getRoll() + "\t\t" + app.getAge() + "\t\t" + app.getEmail());
                 System.out.println();
                 crudOptions();
-            }else{
+            }else {
                 recordflag = true;
             }
         }
@@ -121,11 +159,12 @@ public class CrudApp {
             crudOptions();
         }
     }
-
     public void getAllStudent(){
         System.out.println("ID \t\t\t Name \t\t Roll \t\t Age \t\t Email");
-        for (int i = 0; i < idlist.size(); i++) {
-            System.out.println(idlist.get(i) + "\t\t\t" + namelist.get(i) + "\t\t" + rolllist.get(i) + "\t\t" + agelist.get(i) + "\t\t" + emaillist.get(i));
+        for (int i = 0; i < student.size(); i++) {
+        }
+        for (CrudApplication app : student){
+            System.out.println(app.getId() + "\t\t\t" + app.getName() + "\t\t" + app.getRoll() + "\t\t" + app.getAge() + "\t\t" + app.getEmail());
         }
         System.out.println();
         crudOptions();
@@ -136,7 +175,7 @@ public class CrudApp {
         System.out.println();
         System.out.println("Welcome to Students Data");
         System.out.println();
-        CrudApp cd = new CrudApp();
-        cd.crudOptions();
+        CrudApplication app = new CrudApplication();
+        app.crudOptions();
     }
 }
