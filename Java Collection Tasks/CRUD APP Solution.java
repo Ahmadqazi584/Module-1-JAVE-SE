@@ -2,20 +2,13 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
-public class CrudApplication {
+class Student{
     public int id;
     public String name;
     public String roll;
     public byte age;
     public String email;
-    public int crudoption;
-    public int recordID;
-    public boolean recordflag = false;
-    ArrayList<CrudApplication> student = new ArrayList<>();
-    Scanner sc = new Scanner(System.in);
-    
-    CrudApplication capp;
+
 
     public int getId() {
         return id;
@@ -56,6 +49,15 @@ public class CrudApplication {
     public void setEmail(String email) {
         this.email = email;
     }
+}
+public class CrudApplication extends Student{
+
+    Scanner sc = new Scanner(System.in);
+    public int crudoption;
+    ArrayList<CrudApplication> student = new ArrayList<>();
+    public int recordID;
+    public boolean recordflag = false;
+    CrudApplication capp;
 
     public void crudOptions(){
         System.out.println();
