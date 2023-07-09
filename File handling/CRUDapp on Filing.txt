@@ -1,0 +1,261 @@
+package com.company;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.ListIterator;
+import java.util.Scanner;
+
+public class SimpleFiling implements Serializable {
+    private int id;
+    private String name;
+    private String rollno;
+    private int age;
+    private double gpa;
+
+    public SimpleFiling() {
+    }
+
+    public SimpleFiling(int id, String name, String rollno, int age, double gpa) {
+        this.id = id;
+        this.name = name;
+        this.rollno = rollno;
+        this.age = age;
+        this.gpa = gpa;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getRollno() {
+        return rollno;
+    }
+
+    public void setRollno(String rollno) {
+        this.rollno = rollno;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public double getGpa() {
+        return gpa;
+    }
+
+    public void setGpa(double gpa) {
+        this.gpa = gpa;
+    }
+
+    @Override
+    public String toString() {
+        return "id=" + id +
+                ", name='" + name + '\'' +
+                ", rollno='" + rollno + '\'' +
+                ", age=" + age +
+                ", gpa=" + gpa;
+    }
+
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        int count = -1;
+        Scanner inp = new Scanner(System.in);
+        ArrayList<SimpleFiling> fil = new ArrayList<>();
+        int search_id;
+        boolean boolflag = false;
+        File file = new File("SimpleFiling.txt");
+        try {
+            while (count != 0) {
+                System.out.println("1. Insert");
+                System.out.println("2. Display");
+                System.out.println("3. Search");
+                System.out.println("4. Update");
+                System.out.println("5. Delete");
+                System.out.println("0. Exit");
+                count = inp.nextInt();
+
+                switch (count) {
+                    case 1:
+                        if(file.isFile()){
+
+                        SimpleFiling simfile = new SimpleFiling();
+                        System.out.print("Enter ID: ");
+                        simfile.setId(inp.nextInt());
+                        System.out.print("Enter Name: ");
+                        simfile.setName(inp.next());
+                        System.out.print("Enter Roll No: ");
+                        simfile.setRollno(inp.next());
+                        System.out.print("Enter Age: ");
+                        simfile.setAge(inp.nextInt());
+                        System.out.print("Enter GPA: ");
+                        simfile.setGpa(inp.nextDouble());
+                        fil.add(simfile);
+
+                        try (FileOutputStream fo = new FileOutputStream(file);
+                             ObjectOutputStream oos = new ObjectOutputStream(fo)) {
+                            oos.writeObject(fil);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                        }else{
+                            System.out.println("file not exist!");
+                        }
+                        break;
+
+                    case 2:
+                        if (file.isFile()) {
+                            try (FileInputStream fis = new FileInputStream(file);
+                                 ObjectInputStream ois = new ObjectInputStream(fis)) {
+                                fil = (ArrayList<SimpleFiling>) ois.readObject();
+
+                                for (SimpleFiling filing : fil) {
+                                    System.out.println(filing);
+                                    System.out.println("................................................................");
+                                }
+                                System.out.println();
+
+                            } catch (IOException | ClassNotFoundException e) {
+                                e.printStackTrace();
+                            }
+                        }else {
+                            System.out.println("File not Exist!");
+                        }
+                        break;
+                    case 3:
+                        if (file.isFile()) {
+                            try (FileInputStream fis = new FileInputStream(file);
+                                 ObjectInputStream ois = new ObjectInputStream(fis)) {
+                                fil = (ArrayList<SimpleFiling>) ois.readObject();
+                                System.out.print("Enter the Id you want records to Search : ");
+                                search_id = inp.nextInt();
+
+                                for (SimpleFiling filing : fil) {
+                                    if (search_id == filing.getId()) {
+                                        boolflag = true;
+                                        System.out.println(filing);
+                                    }
+                                }
+
+                                if (boolflag){
+                                    FileOutputStream fos = new FileOutputStream(file);
+                                    ObjectOutputStream oos = new ObjectOutputStream(fos);
+                                    oos.writeObject(fil);
+                                    oos.close();
+                                }else {
+                                    System.out.println("No Record Found!");
+                                }
+                                System.out.println();
+
+                            } catch (IOException | ClassNotFoundException e) {
+                                e.printStackTrace();
+                            }
+                        }else {
+                            System.out.println("File not Exists!");
+                        }
+                        break;
+                    case 4:
+                        if (file.isFile()) {
+                            try (FileInputStream fis = new FileInputStream(file);
+                                 ObjectInputStream ois = new ObjectInputStream(fis)) {
+                                fil = (ArrayList<SimpleFiling>) ois.readObject();
+                                System.out.print("Enter the Id you want records to update : ");
+                                search_id = inp.nextInt();
+
+                                for (SimpleFiling filing : fil) {
+                                    if (search_id == filing.getId()) {
+                                        boolflag = true;
+                                        System.out.print("Enter Name : ");
+                                        filing.setName(inp.next());
+                                        System.out.print("Enter Roll No : ");
+                                        filing.setRollno(inp.next());
+                                        System.out.print("Enter Age : ");
+                                        filing.setAge(inp.nextByte());
+                                        System.out.print("Enter GPA : ");
+                                        filing.setGpa(inp.nextDouble());
+                                    }
+                                }
+                                if (boolflag){
+                                    FileOutputStream fos = new FileOutputStream(file);
+                                    ObjectOutputStream oos = new ObjectOutputStream(fos);
+                                    oos.writeObject(fil);
+                                    oos.close();
+                                }else {
+                                    System.out.println("No Record Found!");
+                                }
+                                System.out.println();
+
+                            } catch (IOException | ClassNotFoundException e) {
+                                e.printStackTrace();
+                            }
+                            break;
+
+                        }else {
+                            System.out.println("File not Exists!");
+                        }
+                        break;
+                    case 5:
+                        if (file.isFile()) {
+                            try (FileInputStream fis = new FileInputStream(file);
+                                 ObjectInputStream ois = new ObjectInputStream(fis)) {
+                                fil = (ArrayList<SimpleFiling>) ois.readObject();
+                                System.out.print("Enter the Id you want records to update : ");
+                                search_id = inp.nextInt();
+
+//                                for (SimpleFiling filing : fil) {
+//                                    if (search_id == filing.getId()) {
+//                                        boolflag = true;
+//                                        fil.remove(fil.get());
+//                                    }
+//                                }
+
+                                for (SimpleFiling filing : fil) {
+                                    if (search_id == filing.getId()) {
+                                        boolflag = true;
+                                        fil.remove(filing);
+                                    }
+                                }
+                                if (boolflag){
+                                    FileOutputStream fos = new FileOutputStream(file);
+                                    ObjectOutputStream oos = new ObjectOutputStream(fos);
+                                    oos.writeObject(fil);
+                                    oos.close();
+                                }else {
+                                    System.out.println("No Record Found!");
+                                }
+                                System.out.println();
+
+                            } catch (IOException | ClassNotFoundException e) {
+                                e.printStackTrace();
+                            }
+                            break;
+
+                        }else {
+                            System.out.println("File not Exists!");
+                        }
+                        break;
+                    default:
+                        throw new IllegalStateException("Unexpected value: " + count);
+                }
+            }
+        }catch (Exception e){
+            System.out.println("Please Select choice from mentioned list Please");
+        }
+    }
+}
+
